@@ -12,20 +12,53 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var collection: UICollectionView!
     
+    var pokemons = [Pokemon]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collection.dataSource = self
         collection.delegate = self
 
+        parsePokemonCSV()
+        
+    }
+    
+    func parsePokemonCSV(){
+        
+        if let path = Bundle.main.path(forResource: "pokemon", ofType: "csv"){
+            
+            do{
+                
+                let csv = try CSV(contentsOfURL: path)
+                let rows = csv.rows
+                
+                for row in rows{
+                    
+                    let pokeId = Int(row["id"]!)!
+                    let name = row["identifier"]!
+                    
+                    let poke = Pokemon(name: name, pokedexID: pokeId)
+                    
+                    pokemons.append(poke)
+                    
+                }
+                
+            }catch let err as NSError{
+                print(err.description)
+            }
+            
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as? PokemonCell{
             
-            let pokemon = Pokemon(name: "Pokemon", pokedexID: indexPath.row + 1)
-            cell.configureCell(pokemon: pokemon)
+            let poke = pokemons[indexPath.row]
+            
+            cell.configureCell(pokemon: poke)
             
             return cell
             
@@ -45,7 +78,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 30
+        return pokemons.count
         
     }
     
