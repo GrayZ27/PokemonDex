@@ -174,6 +174,9 @@
                                             <constraint firstAttribute="width" constant="40" id="XmP-Hf-HDk"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="back"/>
+                                        <connections>
+                                            <action selector="backBtnPressed:" destination="dzV-DH-vC2" eventType="touchUpInside" id="SnW-gk-gVD"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPn-4J-y4R">
                                         <rect key="frame" x="43.5" y="30" width="233" height="27"/>
@@ -433,6 +436,19 @@
                             <constraint firstAttribute="trailing" secondItem="dud-dh-wU0" secondAttribute="trailing" id="wAM-aZ-qtk"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="attackLabel" destination="g74-m9-O9Q" id="nbd-GO-2xs"/>
+                        <outlet property="currentEvoImg" destination="hcf-FQ-AN1" id="mYj-3n-b7Q"/>
+                        <outlet property="defenseLabel" destination="kkQ-9C-ni1" id="4hp-Ss-dvw"/>
+                        <outlet property="descriptionLabel" destination="wLi-2a-LU2" id="OGg-rZ-LBE"/>
+                        <outlet property="evoLabel" destination="iqp-yP-jNr" id="HG6-sI-eZx"/>
+                        <outlet property="heightLabel" destination="ksP-5h-tgx" id="25t-Xv-Zux"/>
+                        <outlet property="mainImg" destination="32c-15-dbh" id="Dz0-bU-Z01"/>
+                        <outlet property="nextEvoImg" destination="4uT-bg-Ski" id="5Pf-ai-Byk"/>
+                        <outlet property="pokedexLabel" destination="6IA-sF-pZe" id="PsR-Hn-RO5"/>
+                        <outlet property="typeLabel" destination="2TN-3q-Dou" id="ALy-fA-gIr"/>
+                        <outlet property="weightLabel" destination="IwZ-YY-ZwG" id="ByQ-fK-bQU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4oH-yW-6Zh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
